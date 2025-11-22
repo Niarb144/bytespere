@@ -2,12 +2,28 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useRef } from "react"; 
+import { useState, useRef, useEffect } from "react"; 
 import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [hideTopBar, setHideTopBar] = useState(false);
+
+    useEffect(() => {
+    const handleScroll = () => {
+        if (window.scrollY > 50) {
+        setHideTopBar(true);
+        } else {
+        setHideTopBar(false);
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+  
   
   // 2. Create a Ref to hold the timer ID
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -30,35 +46,48 @@ export default function Navbar() {
   return (
     <header className="w-full border-b border-gray-200">
       {/* ---------- TOP BAR ---------- */}
-      <div className="w-full bg-white text-gray-700 text-sm border-b border-gray-300 h-14">
-        <div className="max-w-7xl mx-auto flex justify-between px-4 py-4">
-          <p>
+      <motion.div
+        animate={{
+            height: hideTopBar ? 0 : 56,      // 56px = h-14
+            opacity: hideTopBar ? 0 : 1,
+        }}
+        transition={{ duration: 0.3 }}
+        className="overflow-hidden bg-white border-b border-gray-300"
+        >
+        <div className="max-w-7xl mx-auto flex justify-between px-4 py-4 text-gray-700 text-sm">
+            <p>
             1101 W Randol Mill Rd, Arlington TX 76012{" "}
             <a href="https://google.com"><span className="text-blue-600">(View On Google)</span></a>
-          </p>
+            </p>
 
-          <p className="flex items-center gap-1">
+            <p className="flex items-center gap-1">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-4 h-4 text-gray-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4 text-gray-500"
             >
-              <path
+                <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M2.25 6.75c0 8.284 6.716 15 15 15h1.5c.621 0 1.125-.504 1.125-1.125v-2.846a1.125 1.125 0 0 0-.852-1.09l-3.525-.881a1.125 1.125 0 0 0-1.173.417l-.97 1.293c-.203.27-.553.403-.885.314A12.035 12.035 0 0 1 6.3 9.63c-.089-.332.044-.682.314-.885l1.293-.970a1.125 1.125 0 0 0 .417-1.173l-.881-3.525A1.125 1.125 0 0 0 6.252 3.75H3.406A1.125 1.125 0 0 0 2.25 4.875v1.875Z"
-              />
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h1.5c.621 0 1.125-.504 1.125-1.125v-2.846a1.125 1.125 0 0 0-.852-1.09l-3.525-.881a1.125 1.125..."
+                />
             </svg>
             <span className="text-blue-600">972.602.0744</span>
-          </p>
+            </p>
         </div>
-      </div>
+        </motion.div>
+
 
       {/* ---------- MAIN NAV ---------- */}
-      <nav className="bg-white fixed w-full z-10 shadow-sm">
+      <nav
+        className={`bg-white fixed w-full z-20 shadow-sm transition-all duration-300 ${
+            hideTopBar ? "top-0" : "top-14"
+        }`}
+        >
+
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between h-28">
           {/* LOGO */}
           <Link href="/" className="flex items-center">
