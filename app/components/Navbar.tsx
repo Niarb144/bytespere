@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useRef } from "react"; // 1. Import useRef
+import { useState, useRef } from "react"; 
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -29,11 +30,11 @@ export default function Navbar() {
   return (
     <header className="w-full border-b border-gray-200">
       {/* ---------- TOP BAR ---------- */}
-      <div className="w-full bg-white text-gray-700 text-sm border-b border-gray-300">
-        <div className="max-w-7xl mx-auto flex justify-between px-4 py-2">
+      <div className="w-full bg-white text-gray-700 text-sm border-b border-gray-300 h-14">
+        <div className="max-w-7xl mx-auto flex justify-between px-4 py-4">
           <p>
             1101 W Randol Mill Rd, Arlington TX 76012{" "}
-            <span className="text-blue-600">(View On Google)</span>
+            <a href="https://google.com"><span className="text-blue-600">(View On Google)</span></a>
           </p>
 
           <p className="flex items-center gap-1">
@@ -58,7 +59,7 @@ export default function Navbar() {
 
       {/* ---------- MAIN NAV ---------- */}
       <nav className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between h-28">
           {/* LOGO */}
           <Link href="/" className="flex items-center">
             <Image
@@ -70,7 +71,7 @@ export default function Navbar() {
           </Link>
 
           {/* ---------- DESKTOP LINKS ---------- */}
-          <div className="hidden lg:flex items-center space-x-8 text-sm font-semibold text-gray-900">
+          <div className="hidden lg:flex items-center space-x-8 text-sm text-gray-900">
             
             {/* ABOUT + DROPDOWN */}
             <div
@@ -80,13 +81,13 @@ export default function Navbar() {
             >
               <Link
                 href="/about"
-                className="hover:text-blue-600 transition"
+                className="hover:text-blue-800 transition"
               >
                 ABOUT
               </Link>
 
               {openMenu === "about" && (
-                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg border border-gray-100 rounded-md py-3 opacity-100 animate-fade z-50">
+                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg border border-gray-100 py-3 opacity-100 animate-fade z-50">
                   <Link
                     href="/about/company"
                     className="block px-4 py-2 hover:bg-gray-100"
@@ -125,7 +126,7 @@ export default function Navbar() {
               </Link>
 
               {openMenu === "hardware" && (
-                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg border rounded-md py-3 animate-fade z-50">
+                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg border border-gray-100 py-3 animate-fade z-50">
                   <Link
                     href="/hardware/devices"
                     className="block px-4 py-2 hover:bg-gray-100"
@@ -159,7 +160,7 @@ export default function Navbar() {
               </Link>
 
               {openMenu === "industries" && (
-                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg border rounded-md py-3 animate-fade z-50">
+                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg  border-gray-100 py-3 animate-fade z-50">
                   <Link
                     href="/industries/healthcare"
                     className="block px-4 py-2 hover:bg-gray-100"
@@ -188,32 +189,43 @@ export default function Navbar() {
           </div>
 
           {/* ---------- RIGHT BUTTONS ---------- */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <Link
-              href="/client-portal"
-              className="bg-[#007bcb] text-white px-4 py-3 text-xs font-semibold"
-            >
-              CLIENT
-              <br />
-              PORTAL
-            </Link>
-            <Link
-              href="/quote"
-              className="bg-[#007bcb] text-white px-4 py-3 text-xs font-semibold"
-            >
-              REQUEST A
-              <br />
-              QUOTE
-            </Link>
-            <Link
-              href="/help"
-              className="bg-[#007bcb] text-white px-4 py-3 text-xs font-semibold"
-            >
-              GET
-              <br />
-              HELP
-            </Link>
-          </div>
+          <div className="hidden lg:flex items-center space-x-2 w-90 h-50">
+            {[
+                { href: "/client-portal", label: "CLIENT PORTAL" },
+                { href: "/quote", label: "REQUEST A QUOTE" },
+                { href: "/help", label: "GET HELP" },
+            ].map((item, i) => (
+                <motion.div
+                key={i}
+                whileHover="hover"
+                className="overflow-hidden"
+                >
+                <Link href={item.href}>
+                    <motion.div
+                    initial="rest"
+                    animate="rest"
+                    variants={{
+                        rest: { backgroundColor: "#007bcb" },
+                        hover: { backgroundColor: "#8dccf7ff" },
+                    }}
+                    className="px-4 py-3 text-sm text-white relative"
+                    >
+                        {/* Sliding text wrapper */}
+                        <motion.span
+                            variants={{
+                            rest: { y: 0 },
+                            hover: { y: -6 },
+                            }}
+                            transition={{ type: "tween", duration: 0.25 }}
+                            className="block"
+                        >
+                            {item.label}
+                        </motion.span>
+                    </motion.div>
+                </Link>
+                </motion.div>
+                ))}
+            </div>
 
           {/* ---------- MOBILE BUTTON ---------- */}
           <button
