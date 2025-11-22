@@ -58,7 +58,7 @@ export default function Navbar() {
       </div>
 
       {/* ---------- MAIN NAV ---------- */}
-      <nav className="bg-white">
+      <nav className="bg-white fixed w-full z-10 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between h-28">
           {/* LOGO */}
           <Link href="/" className="flex items-center">
@@ -189,7 +189,7 @@ export default function Navbar() {
           </div>
 
           {/* ---------- RIGHT BUTTONS ---------- */}
-          <div className="hidden lg:flex items-center space-x-2 w-90 h-50">
+          <div className="hidden lg:flex items-center space-x-2 w-90 py-2">
             {[
                 { href: "/client-portal", label: "CLIENT PORTAL" },
                 { href: "/quote", label: "REQUEST A QUOTE" },
