@@ -8,7 +8,7 @@ export default function ManagedItServices() {
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         {/* LEFT IMAGE */}
-        <div className="relative w-full h-[200px] lg:h-[350px] overflow-hidden shadow-lg">
+        <div className="relative w-full h-[200px] lg:h-[300px] overflow-hidden shadow-lg">
           <Image
             src="/images/img7.jpg"
             alt="System hacked warning on laptop"
@@ -44,19 +44,19 @@ export default function ManagedItServices() {
 
           {/* CTA BUTTON */}
           <div>
-            <button className="px-8 py-4 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
+            <button className="px-8 py-4 bg-blue-700 text-white hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
               VIEW MANAGED IT SERVICES
             </button>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-4">
         
         {/* LEFT IMAGE */}
-        <div className="relative w-full h-[200px] lg:h-[350px] rounded-md overflow-hidden shadow-lg">
+        <div className="relative w-full h-[200px] lg:h-[300px] overflow-hidden shadow-lg">
           <Image
-            src="/images/img7.jpg" // replace with actual image path
+            src="/images/img3.jpg" // replace with actual image path
             alt="System hacked warning on laptop"
             fill
             className="object-cover h-[200px]"
@@ -86,19 +86,19 @@ export default function ManagedItServices() {
 
           {/* CTA BUTTON */}
           <div>
-            <button className="px-8 py-4 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
+            <button className="px-8 py-4 bg-blue-700 text-white hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
               VIEW REMOTE IT SERVICES
             </button>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-4">
         
         {/* LEFT IMAGE */}
-        <div className="relative w-full h-[200px] lg:h-[350px] rounded-md overflow-hidden shadow-lg">
+        <div className="relative w-full h-[200px] lg:h-[300px] overflow-hidden shadow-lg">
           <Image
-            src="/images/img7.jpg" // replace with actual image path
+            src="/images/img6.jpg" 
             alt="System hacked warning on laptop"
             fill
             className="object-cover h-[200px]"
@@ -124,7 +124,7 @@ export default function ManagedItServices() {
 
           {/* CTA BUTTON */}
           <div>
-            <button className="px-8 py-4 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
+            <button className="px-8 py-4 bg-blue-700 text-white hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
               VIEW DATA BACKUP SERVICES
             </button>
           </div>
@@ -134,9 +134,9 @@ export default function ManagedItServices() {
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-4">
         
         {/* LEFT IMAGE */}
-        <div className="relative w-full h-[200px] lg:h-[350px] rounded-md overflow-hidden shadow-lg">
+        <div className="relative w-full h-[200px] lg:h-[300px] overflow-hidden shadow-lg">
           <Image
-            src="/images/img7.jpg" // replace with actual image path
+            src="/images/img5.jpg" // replace with actual image path
             alt="System hacked warning on laptop"
             fill
             className="object-cover h-[200px]"
@@ -163,19 +163,19 @@ export default function ManagedItServices() {
 
           {/* CTA BUTTON */}
           <div>
-            <button className="px-8 py-4 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
+            <button className="px-8 py-4 bg-blue-700 text-white hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
               OFFICE 365 MANAGED SERVICES
             </button>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-4">
         
         {/* LEFT IMAGE */}
-        <div className="relative w-full h-[200px] lg:h-[350px] rounded-md overflow-hidden shadow-lg">
+        <div className="relative w-full h-[200px] lg:h-[300px] overflow-hidden shadow-lg">
           <Image
-            src="/images/img7.jpg" // replace with actual image path
+            src="/images/img4.jpg" // replace with actual image path
             alt="System hacked warning on laptop"
             fill
             className="object-cover h-[200px]"
@@ -201,7 +201,7 @@ export default function ManagedItServices() {
 
           {/* CTA BUTTON */}
           <div>
-            <button className="px-8 py-4 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
+            <button className="px-8 py-4 bg-blue-700 text-white hover:bg-blue-800 transition font-medium tracking-wide shadow-md">
               VIEW IT CONSULTING INFO
             </button>
           </div>
