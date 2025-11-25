@@ -9,10 +9,10 @@ export default function HeroSection() {
         {/* Banner */}
         <div className="absolute top-0 left-0 w-full h-12 bg-gray-800 flex items-center justify-center z-2">
             <p className="text-white text-sm md:text-base font-medium">
-            Get a Free IT Consultation Today! Call Us at{" "}
-            <a href="tel:+1234567890" className="underline">
+            Update your compter network today!{" "}
+            {/* <a href="tel:+1234567890" className="underline">
                 (123) 456-7890
-            </a>
+            </a> */}
             </p>
         </div>
       {/* --- Background Grid (3 Images) --- */}
