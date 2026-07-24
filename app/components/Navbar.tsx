@@ -56,7 +56,7 @@ export default function Navbar() {
         >
         <div className="max-w-7xl mx-auto flex justify-between px-4 py-4 text-gray-700 text-sm">
             <p>
-            1101 W Randol Mill Rd, Arlington TX 76012{" "}
+            Westlands, Nairobi, Kenya{" "}
             <a href="https://google.com"><span className="text-blue-600">(View On Google)</span></a>
             </p>
 

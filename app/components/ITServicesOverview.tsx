@@ -30,10 +30,10 @@ export default function ITServicesOverview() {
         {/* RIGHT CONTENT */}
         <div>
           <h2 className="text-4xl font-bold text-gray-900 mb-2">
-            Dallas IT Services Overview
+            Bytespere IT Services Overview
           </h2>
           <p className="text-sm text-gray-600 mb-8">
-            Located in Dallas, Texas, SPP serves clients throughout the United States.
+            Located in Nairobi, Kenya, Bytespere serves clients throughout the region.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-10">

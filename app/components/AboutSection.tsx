@@ -35,13 +35,13 @@ export default function AboutSection() {
         {/* RIGHT CONTENT */}
         <div>
             <h2 className="text-4xl font-bold text-gray-900 leading-snug mb-6">
-            Dallas IT Services & Beyond
+            Bytespere IT Services & Beyond
             </h2>
 
             <p className="text-gray-600 leading-relaxed mb-6">
             System Protection Partners’ purpose is to provide clients with quality
             <span className="text-blue-600 font-semibold"> IT services </span>
-            in Dallas and across the nation at a competitive price. This can be
+            in Nairobi, Kenya and across the region at a competitive price. This can be
             accomplished with a good business plan and smart recruiting. Our
             “mission”, however, is to do this with compassion and concern for our
             <span className="text-blue-600 font-semibold"> clients’ </span> time,

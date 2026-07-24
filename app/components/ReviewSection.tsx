@@ -65,7 +65,7 @@ export default function ReviewSection() {
     <section className="py-16 bg-gray-50">
       {/* TITLE */}
       <h2 className="text-left text-3xl md:text-4xl font-bold mb-10 text-white bg-blue-600 py-6 px-4">
-        Dallas IT Services & IT Support Reviews
+        Bytespere IT Services & IT Support Reviews
       </h2>
 
       {/* GOOGLE REVIEWS HEADER */}

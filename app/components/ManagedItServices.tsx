@@ -21,14 +21,14 @@ export default function ManagedItServices() {
         {/* RIGHT CONTENT */}
         <div className="flex flex-col space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
-            Managed IT Services In Dallas, TX
+            Managed IT Services In Nairobi, Kenya
           </h2>
 
           <p className="text-gray-600 leading-relaxed">
-            SPPIT offers top quality and affordable Managed IT Services in Dallas,
-            Texas. From local onsite support to{" "}
+            Bytespere offers top quality and affordable Managed IT Services in Nairobi,
+            Kenya. From local onsite support to{" "}
             <span className="text-blue-600 font-medium cursor-pointer">remote IT</span>{" "}
-            internationally, you can count on <span className="text-blue-600 font-medium">SPPIT</span> to
+            internationally, you can count on <span className="text-blue-600 font-medium">Bytespere</span> to
             help your business stay ahead of the fast paced, and ever-changing IT
             landscape.
           </p>
@@ -37,7 +37,7 @@ export default function ManagedItServices() {
             As your managed IT service providers, we make your{" "}
             <span className="text-blue-600 font-medium cursor-pointer">businesses</span> IT
             simple. No matter the complexity of your IT infrastructure,{" "}
-            <span className="text-blue-600 font-medium">SPP IT</span> has the know-how and the
+            <span className="text-blue-600 font-medium">Bytespere</span> has the know-how and the
             tools to make sure all your IT is working properly and efficiently so
             that your business may operate at its optimal potential.
           </p>
@@ -67,19 +67,19 @@ export default function ManagedItServices() {
         {/* RIGHT CONTENT */}
         <div className="flex flex-col space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
-            Dallas IT Services With Remote Support World Wide
+            Bytespere IT Services With Remote Support World Wide
 
           </h2>
 
           <p className="text-gray-600 leading-relaxed">
-            System Protection Partners is a leading remote IT support company based in the Dallas, Ft Worth
+            System Protection Partners is a leading remote IT support company based in the Nairobi, Kenya
              Metroplex that is known for its advanced and comprehensive range of remote IT{" "}
             <span className="text-blue-600 font-medium cursor-pointer">helpdesk</span>{" "}
             and support services. With a steadfast commitment to delivering cutting-edge solutions,
              we have positioned ourselves as a trusted partner for businesses both internationally
-              and locally in the Dallas, FT Worth Metroplex seeking efficient and
+              and locally in the Nairobi, Kenya Metroplex seeking efficient and
                <span className="text-blue-600 font-medium">reliable remote IT assistance</span> Our
-                team of skilled Dallas IT professionals excel in providing remote support across
+                team of skilled Nairobi IT professionals excel in providing remote support across
                  diverse IT domains, ensuring that clients receive prompt and effective solutions
                   to their technical challenges.
           </p>

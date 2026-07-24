@@ -56,8 +56,7 @@ export default function HeroSection() {
         className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-16"
       >
         <h1 className="text-white text-xl md:text-3xl font-bold max-w-3xl leading-tight drop-shadow-md">
-          Providing Business IT Services In Dallas
-          <br /> and across United States for over 20 years.
+          Providing Business IT Services In Nairobi, Kenya
         </h1>
       </motion.div>
     </section>

@@ -60,11 +60,12 @@ const Footer: React.FC = () => {
               />
               <div className="text-sm">
                 <p className="font-bold text-lg mb-1">Bytspere</p>
-                <p>1101 W Randol Mill Rd, Arlington TX 76012</p>
+                <p>Westlands, Nairobi, Kenya</p>
               </div>
             </div>
             <p className="text-sm mb-4">
-              Copyright © 2025 - System Protection Partners, LLC
+              Copyright 
+              &copy; {new Date().getFullYear()} Bytespere. All rights reserved.
             </p>
             <p className="text-lg font-bold mb-4">
               1st Class Managed Service Provider With Global Coverage!

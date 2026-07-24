@@ -7,7 +7,7 @@ import ManagedItServices from "./components/ManagedItServices";
 import ReviewSection from "./components/ReviewSection";
 import BlogSection from "./components/BlogSection";
 import IndustrySlider from "./components/IndustrySlider";
-import VendorsSection from "./components/VedorSection";
+import VendorsSection from "./components/VendorSection";
 
 export default function Home() {
   return (
