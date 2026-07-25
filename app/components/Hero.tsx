@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-[90vh] overflow-hidden mt-28">
+    <section className="relative w-full h-[90vh] overflow-hidden mt-0">
         {/* Banner */}
         <div className="absolute top-0 left-0 w-full h-12 bg-gray-800 flex items-center justify-center z-2">
             <p className="text-white text-sm md:text-base font-medium">

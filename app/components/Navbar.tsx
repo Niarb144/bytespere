@@ -2,308 +2,294 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react"; 
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+type DropdownItem = { href: string; label: string };
+
+const DROPDOWNS: Record<string, DropdownItem[]> = {
+  about: [
+    { href: "/about/company", label: "Company Overview" },
+    { href: "/about/team", label: "Our Team" },
+    { href: "/about/careers", label: "Careers" },
+  ],
+  "it-services": [
+    { href: "/it-services/managed-it", label: "Managed IT Support" },
+    { href: "/it-services/cloud", label: "Cloud Solutions" },
+    { href: "/it-services/cybersecurity", label: "Cybersecurity" },
+    { href: "/it-services/backup-recovery", label: "Backup & Disaster Recovery" },
+    { href: "/it-services/it-consulting", label: "IT Consulting" },
+    { href: "/it-services/helpdesk", label: "Helpdesk & Support" },
+  ],
+  hardware: [
+    { href: "/hardware/devices", label: "Hardware Devices" },
+    { href: "/hardware/networking", label: "Network Solutions" },
+    { href: "/hardware/support", label: "Maintenance & Support" },
+  ],
+  industries: [
+    { href: "/industries/healthcare", label: "Healthcare" },
+    { href: "/industries/finance", label: "Finance" },
+    { href: "/industries/retail", label: "Retail" },
+  ],
+};
+
+const NAV_LINKS: { key: string; href: string; label: string }[] = [
+  { key: "about", href: "/about", label: "ABOUT" },
+  { key: "it-services", href: "/it-services", label: "IT SERVICES" },
+  { key: "hardware", href: "/hardware", label: "HARDWARE & NETWORKING" },
+  { key: "industries", href: "/industries", label: "INDUSTRIES" },
+];
+
+const CTA_BUTTONS = [
+  { href: "/client-portal", label: "CLIENT PORTAL" },
+  { href: "/quote", label: "REQUEST A QUOTE" },
+  { href: "/help", label: "GET HELP" },
+];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [hideTopBar, setHideTopBar] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
 
-    useEffect(() => {
-    const handleScroll = () => {
-        if (window.scrollY > 50) {
-        setHideTopBar(true);
-        } else {
-        setHideTopBar(false);
-        }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-  
-  
-  // 2. Create a Ref to hold the timer ID
+  const headerRef = useRef<HTMLElement | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 3. Function to open menu (and cancel any pending close action)
+  // Collapse the top bar on scroll
+  useEffect(() => {
+    const handleScroll = () => setHideTopBar(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Keep a spacer in sync with the fixed header's REAL height, at any
+  // breakpoint and in any state (topbar shown/hidden, mobile menu open/closed).
+  // This is what actually fixes the overlap/jump on scroll.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => setHeaderHeight(el.getBoundingClientRect().height);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [mobileOpen, hideTopBar]);
+
   const handleMouseEnter = (menu: string) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setOpenMenu(menu);
   };
-
-  // 4. Function to close menu with a slight delay
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setOpenMenu(null);
-    }, 200); // 200ms delay allows cursor to cross the gap
+    timeoutRef.current = setTimeout(() => setOpenMenu(null), 200);
   };
 
   return (
-    <header className="w-full border-b border-gray-200">
-      {/* ---------- TOP BAR ---------- */}
-      <motion.div
-        animate={{
-            height: hideTopBar ? 0 : 56,      // 56px = h-14
-            opacity: hideTopBar ? 0 : 1,
-        }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden bg-white border-b border-gray-300"
+    <>
+      <header
+        ref={headerRef}
+        className="fixed top-0 left-0 w-full z-20 bg-white border-b border-gray-200 shadow-sm"
+      >
+        {/* ---------- TOP BAR ---------- */}
+        <motion.div
+          animate={{ height: hideTopBar ? 0 : "auto", opacity: hideTopBar ? 0 : 1 }}
+          transition={{ duration: 0.3 }}
+          className="hidden sm:block overflow-hidden bg-white border-b border-gray-300"
         >
-        <div className="max-w-7xl mx-auto flex justify-between px-4 py-4 text-gray-700 text-sm">
-            <p>
-            Westlands, Nairobi, Kenya{" "}
-            <a href="https://google.com"><span className="text-blue-600">(View On Google)</span></a>
+          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 px-4 py-3 text-gray-700 text-xs sm:text-sm">
+            <p className="truncate">
+              Westlands, Nairobi, Kenya{" "}
+              <a href="https://google.com" className="text-blue-600 whitespace-nowrap">
+                (View On Google)
+              </a>
             </p>
-
-            <p className="flex items-center gap-1">
-            <svg
+            <p className="flex items-center gap-1 whitespace-nowrap">
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4 text-gray-500"
-            >
+                className="w-4 h-4 text-gray-500 shrink-0"
+              >
                 <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 6.75c0 8.284 6.716 15 15 15h1.5c.621 0 1.125-.504 1.125-1.125v-2.846a1.125 1.125 0 0 0-.852-1.09l-3.525-.881a1.125 1.125..."
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 6.75c0 8.284 6.716 15 15 15h1.5a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106a1.125 1.125 0 00-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
                 />
-            </svg>
-            <span className="text-blue-600">972.602.0744</span>
+              </svg>
+              <span className="text-blue-600">0700 511 311</span>
             </p>
-        </div>
+          </div>
         </motion.div>
 
-
-      {/* ---------- MAIN NAV ---------- */}
-      <nav
-        className={`bg-white fixed w-full z-20 shadow-sm transition-all duration-300 ${
-            hideTopBar ? "top-0" : "top-14"
-        }`}
-        >
-
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between h-28">
-          {/* LOGO */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/images/logo.png"
-              alt="Bytspere Logo"
-              width={50}
-              height={50}
-            />
-          </Link>
-
-          {/* ---------- DESKTOP LINKS ---------- */}
-          <div className="hidden lg:flex items-center space-x-8 text-sm text-gray-900">
-            
-            {/* ABOUT + DROPDOWN */}
-            <div
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("about")} // Updated
-              onMouseLeave={handleMouseLeave} // Updated
-            >
-              <Link
-                href="/about"
-                className="hover:text-blue-800 transition"
-              >
-                ABOUT
-              </Link>
-
-              {openMenu === "about" && (
-                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg border border-gray-100 py-3 opacity-100 animate-fade z-50">
-                  <Link
-                    href="/about/company"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Company Overview
-                  </Link>
-                  <Link
-                    href="/about/team"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Our Team
-                  </Link>
-                  <Link
-                    href="/about/careers"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Careers
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* IT SERVICES (NO DROPDOWN) */}
-            <Link href="/it-services" className="hover:text-blue-600 transition">
-              IT SERVICES
+        {/* ---------- MAIN NAV ---------- */}
+        <nav className="w-full">
+          <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 sm:h-20 lg:h-24">
+            {/* LOGO */}
+            <Link href="/" className="flex items-center shrink-0">
+              <Image
+                src="/images/logo.png"
+                alt="Bytspere Logo"
+                width={48}
+                height={48}
+                className="w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12"
+              />
             </Link>
 
-            {/* HARDWARE DROPDOWN */}
-            <div
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("hardware")} // Updated
-              onMouseLeave={handleMouseLeave} // Updated
-            >
-              <Link href="/hardware" className="hover:text-blue-600 transition">
-                HARDWARE & NETWORKING
-              </Link>
-
-              {openMenu === "hardware" && (
-                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg border border-gray-100 py-3 animate-fade z-50">
-                  <Link
-                    href="/hardware/devices"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Hardware Devices
-                  </Link>
-                  <Link
-                    href="/hardware/networking"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Network Solutions
-                  </Link>
-                  <Link
-                    href="/hardware/support"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Maintenance & Support
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* INDUSTRIES DROPDOWN */}
-            <div
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("industries")} // Updated
-              onMouseLeave={handleMouseLeave} // Updated
-            >
-              <Link href="/industries" className="hover:text-blue-600 transition">
-                INDUSTRIES
-              </Link>
-
-              {openMenu === "industries" && (
-                <div className="absolute left-0 top-full mt-3 w-52 bg-white shadow-lg  border-gray-100 py-3 animate-fade z-50">
-                  <Link
-                    href="/industries/healthcare"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Healthcare
-                  </Link>
-                  <Link
-                    href="/industries/finance"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Finance
-                  </Link>
-                  <Link
-                    href="/industries/retail"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Retail
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <Link href="/contact" className="hover:text-blue-600 transition">
-              CONTACT
-            </Link>
-          </div>
-
-          {/* ---------- RIGHT BUTTONS ---------- */}
-          <div className="hidden lg:flex items-center space-x-2 w-90 py-2">
-            {[
-                { href: "/client-portal", label: "CLIENT PORTAL" },
-                { href: "/quote", label: "REQUEST A QUOTE" },
-                { href: "/help", label: "GET HELP" },
-            ].map((item, i) => (
-                <motion.div
-                key={i}
-                whileHover="hover"
-                className="overflow-hidden"
+            {/* ---------- DESKTOP LINKS ---------- */}
+            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8 text-sm text-gray-900">
+              {NAV_LINKS.map((link) => (
+                <div
+                  key={link.key}
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter(link.key)}
+                  onMouseLeave={handleMouseLeave}
                 >
-                <Link href={item.href}>
-                    <motion.div
-                    initial="rest"
-                    animate="rest"
-                    variants={{
-                        rest: { backgroundColor: "#007bcb" },
-                        hover: { backgroundColor: "#8dccf7ff" },
-                    }}
-                    className="px-4 py-3 text-sm text-white relative"
-                    >
-                        {/* Sliding text wrapper */}
-                        <motion.span
-                            variants={{
-                            rest: { y: 0 },
-                            hover: { y: -6 },
-                            }}
-                            transition={{ type: "tween", duration: 0.25 }}
-                            className="block"
-                        >
+                  <Link href={link.href} className="hover:text-blue-600 transition">
+                    {link.label}
+                  </Link>
+
+                  <AnimatePresence>
+                    {openMenu === link.key && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 max-w-[90vw] bg-white shadow-lg border border-gray-100 py-3 z-50"
+                      >
+                        {DROPDOWNS[link.key].map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block px-4 py-2 text-sm hover:bg-gray-100"
+                          >
                             {item.label}
-                        </motion.span>
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+
+              <Link href="/contact" className="hover:text-blue-600 transition">
+                CONTACT
+              </Link>
+            </div>
+
+            {/* ---------- RIGHT BUTTONS (desktop) ---------- */}
+            <div className="hidden lg:flex items-center gap-2">
+              {CTA_BUTTONS.map((item) => (
+                <motion.div key={item.href} whileHover="hover" className="overflow-hidden">
+                  <Link href={item.href}>
+                    <motion.div
+                      initial="rest"
+                      animate="rest"
+                      variants={{
+                        rest: { backgroundColor: "#007bcb" },
+                        hover: { backgroundColor: "#8dccf7" },
+                      }}
+                      className="px-3 xl:px-4 py-2.5 text-xs xl:text-sm text-white whitespace-nowrap relative overflow-hidden"
+                    >
+                      <motion.span
+                        variants={{ rest: { y: 0 }, hover: { y: -6 } }}
+                        transition={{ type: "tween", duration: 0.25 }}
+                        className="block"
+                      >
+                        {item.label}
+                      </motion.span>
                     </motion.div>
-                </Link>
+                  </Link>
                 </motion.div>
-                ))}
+              ))}
             </div>
 
-          {/* ---------- MOBILE BUTTON ---------- */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-md border border-gray-300"
-          >
-            {mobileOpen ? (
-              <span className="text-xl">×</span>
-            ) : (
-              <span className="text-xl">☰</span>
-            )}
-          </button>
-        </div>
-
-        {/* ---------- MOBILE MENU ---------- */}
-        {mobileOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-200">
-            <div className="px-4 py-4 space-y-3 text-gray-900 font-semibold text-sm">
-              <Link href="/about">ABOUT</Link>
-              <Link href="/it-services">IT SERVICES</Link>
-              <Link href="/hardware">HARDWARE & NETWORKING</Link>
-              <Link href="/industries">INDUSTRIES</Link>
-              <Link href="/contact">CONTACT</Link>
-
-              {/* Buttons stacked */}
-              <div className="pt-2 space-y-2">
-                <Link
-                  href="/client-portal"
-                  className="block bg-[#007bcb] text-white text-center px-4 py-3 text-xs font-semibold"
-                >
-                  CLIENT PORTAL
-                </Link>
-                <Link
-                  href="/quote"
-                  className="block bg-[#007bcb] text-white text-center px-4 py-3 text-xs font-semibold"
-                >
-                  REQUEST A QUOTE
-                </Link>
-                <Link
-                  href="/help"
-                  className="block bg-[#007bcb] text-white text-center px-4 py-3 text-xs font-semibold"
-                >
-                  GET HELP
-                </Link>
-              </div>
-            </div>
+            {/* ---------- MOBILE BUTTON ---------- */}
+            <button
+              onClick={() => setMobileOpen((o) => !o)}
+              className="lg:hidden p-2 rounded-md border border-gray-300"
+              aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+            >
+              <span className="text-xl leading-none">{mobileOpen ? "×" : "☰"}</span>
+            </button>
           </div>
-        )}
-      </nav>
-    </header>
+
+          {/* ---------- MOBILE MENU ---------- */}
+          <AnimatePresence>
+            {mobileOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="lg:hidden bg-white border-t border-gray-200 overflow-hidden"
+              >
+                <div className="px-4 py-4 space-y-1 text-gray-900 font-semibold text-sm max-h-[70vh] overflow-y-auto">
+                  {NAV_LINKS.map((link) => (
+                    <div key={link.key} className="border-b border-gray-100 last:border-0">
+                      <button
+                        onClick={() =>
+                          setMobileSubOpen(mobileSubOpen === link.key ? null : link.key)
+                        }
+                        className="flex items-center justify-between w-full py-3"
+                      >
+                        {link.label}
+                        <span
+                          className={`transition-transform text-gray-400 ${
+                            mobileSubOpen === link.key ? "rotate-180" : ""
+                          }`}
+                        >
+                          ⌄
+                        </span>
+                      </button>
+
+                      <AnimatePresence>
+                        {mobileSubOpen === link.key && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden font-normal text-gray-600"
+                          >
+                            {DROPDOWNS[link.key].map((item) => (
+                              <Link key={item.href} href={item.href} className="block py-2 pl-3">
+                                {item.label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))}
+
+                  <Link href="/contact" className="block py-3">
+                    CONTACT
+                  </Link>
+
+                  <div className="pt-3 space-y-2">
+                    {CTA_BUTTONS.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block bg-[#007bcb] text-white text-center px-4 py-3 text-xs font-semibold"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </nav>
+      </header>
+
+      {/* Spacer — always matches the real fixed-header height, at every
+          breakpoint and every state, so content never jumps or hides under it */}
+      <div style={{ height: headerHeight }} />
+    </>
   );
 }
