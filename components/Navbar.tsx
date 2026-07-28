@@ -14,17 +14,19 @@ const DROPDOWNS: Record<string, DropdownItem[]> = {
     { href: "/careers", label: "Careers" },
   ],
   "it-services": [
-    { href: "/it-services/managed-it", label: "Managed IT Support" },
-    { href: "/it-services/cloud", label: "Cloud Solutions" },
-    { href: "/it-services/cybersecurity", label: "Cybersecurity" },
-    { href: "/it-services/backup-recovery", label: "Backup & Disaster Recovery" },
-    { href: "/it-services/it-consulting", label: "IT Consulting" },
-    { href: "/it-services/helpdesk", label: "Helpdesk & Support" },
+    { href: "/it-services#managed-it", label: "Managed IT Support" },
+    { href: "/it-services#cloud-services", label: "Cloud Solutions" },
+    { href: "/it-services#compliance-testing", label: "Compliance Testing" },
+    { href: "/it-services#backup-recovery", label: "Backup & Disaster Recovery" },
+    { href: "/it-services#helpdesk-support", label: "Helpdesk & Support" },
+    { href: "/it-services#office-365-email", label: "Office 365 / Email" },
+    { href: "/it-services#patch-management", label: "Patch Management" },
+    { href: "/it-services#remote-it-support", label: "Remote IT Support" },
   ],
   hardware: [
-    { href: "/hardware/devices", label: "Hardware Devices" },
-    { href: "/hardware/networking", label: "Network Solutions" },
-    { href: "/hardware/support", label: "Maintenance & Support" },
+    { href: "/hardware-and-networking/devices", label: "Hardware Devices" },
+    { href: "/hardware-and-networking/networking", label: "Network Solutions" },
+    { href: "/hardware-and-networking/support", label: "Maintenance & Support" },
   ],
   industries: [
     { href: "/industries/healthcare", label: "Healthcare" },
@@ -36,7 +38,7 @@ const DROPDOWNS: Record<string, DropdownItem[]> = {
 const NAV_LINKS: { key: string; href: string; label: string }[] = [
   { key: "about", href: "/about", label: "ABOUT" },
   { key: "it-services", href: "/it-services", label: "IT SERVICES" },
-  { key: "hardware", href: "/hardware", label: "HARDWARE & NETWORKING" },
+  { key: "hardware", href: "/hardware-and-networking", label: "HARDWARE & NETWORKING" },
   { key: "industries", href: "/industries", label: "INDUSTRIES" },
 ];
 
