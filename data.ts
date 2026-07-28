@@ -19,6 +19,9 @@ import {
   BuildingOffice2Icon,
   BuildingLibraryIcon,
   Cog8ToothIcon,
+  ClockIcon,
+  SparklesIcon,
+  UsersIcon,
 } from "@heroicons/react/24/solid";
 
 // ---------- IT SERVICES ----------
@@ -509,5 +512,33 @@ export const quoteProcessSteps = [
     title: "Get Started",
     description:
       "Once you're happy with the quote, we schedule an onboarding date that works for your business.",
+  },
+];
+
+//------CAREERS PAGE DATA------
+export const careerPerks = [
+  {
+    icon: UsersIcon,
+    title: "Collaborative Team",
+    description:
+      "Work alongside experienced engineers and support staff who genuinely enjoy solving problems together.",
+  },
+  {
+    icon: SparklesIcon,
+    title: "Room To Grow",
+    description:
+      "Hands-on exposure across managed services, networking, and hardware, with room to specialize as you grow.",
+  },
+  {
+    icon: ClockIcon,
+    title: "Real Work-Life Balance",
+    description:
+      "Defined hours and reasonable on-call rotations, so client support doesn't come at the cost of your own time.",
+  },
+  {
+    icon: ShieldCheckIcon,
+    title: "Stable, Local Employer",
+    description:
+      "Three decades serving Nairobi businesses, with the stability of an established company and the pace of a growing one.",
   },
 ];
