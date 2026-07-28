@@ -45,7 +45,7 @@ const NAV_LINKS: { key: string; href: string; label: string }[] = [
 const CTA_BUTTONS = [
   // { href: "/client-portal", label: "CLIENT PORTAL" },
   { href: "/quote", label: "REQUEST A QUOTE" },
-  { href: "/help", label: "GET HELP" },
+  { href: "/contact", label: "GET HELP" },
 ];
 
 export default function Navbar() {

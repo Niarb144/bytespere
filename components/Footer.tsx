@@ -72,10 +72,9 @@ const Footer: React.FC = () => {
             </p>
             <div className="w-24 border-b-2 border-white mb-4"></div> {/* Underline */}
             <div className="text-sm flex flex-wrap gap-x-4 gap-y-2">
-              <Link href="#" className="hover:underline">Contact Us</Link>
-              <Link href="#" className="hover:underline">Vendors</Link>
-              <Link href="#" className="hover:underline">Privacy Policy</Link>
-              <Link href="#" className="hover:underline">Web Accessibility Statement</Link>
+              <Link href="/contact" className="hover:underline">Contact Us</Link>
+              <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
+              <Link href="/terms-and-conditions" className="hover:underline">Terms & Conditions</Link>
             </div>
           </div>
 
@@ -83,13 +82,14 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-xl mb-4">Managed IT Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="#" className="hover:underline">View All Managed IT</Link></li>
-              <li><Link href="#" className="hover:underline">Data Backup & Recovery</Link></li>
-              <li><Link href="#" className="hover:underline">Compliance Testing</Link></li>
-              <li><Link href="#" className="hover:underline">Remote IT Support</Link></li>
-              <li><Link href="#" className="hover:underline">Office 365 / Email</Link></li>
-              <li><Link href="#" className="hover:underline">HelpDesk Support</Link></li>
-              <li><Link href="#" className="hover:underline">Patch Management</Link></li>
+              <li><Link href="/it-services" className="hover:underline">View All Managed IT</Link></li>
+              <li><Link href="/it-services#cloud-services" className="hover:underline">Cloud Services</Link></li>
+              <li><Link href="/it-services#data-backup-recovery" className="hover:underline">Data Backup & Recovery</Link></li>
+              <li><Link href="/it-services#compliance-testing" className="hover:underline">Compliance Testing</Link></li>
+              <li><Link href="/it-services#remote-it-support" className="hover:underline">Remote IT Support</Link></li>
+              <li><Link href="/it-services#office-365-email" className="hover:underline">Office 365 / Email</Link></li>
+              <li><Link href="/it-services#helpdesk-suppor" className="hover:underline">HelpDesk Support</Link></li>
+              <li><Link href="/it-services#patch-management" className="hover:underline">Patch Management</Link></li>
             </ul>
           </div>
 
@@ -97,11 +97,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-xl mb-4">Hardware / Networking</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="#" className="hover:underline">View All Services</Link></li>
-              <li><Link href="#" className="hover:underline">Computer Networking Services</Link></li>
-              <li><Link href="#" className="hover:underline">Computer Repair Services</Link></li>
-              <li><Link href="#" className="hover:underline">Purchase Computer Systems</Link></li>
-              <li><Link href="#" className="hover:underline">IT Products</Link></li>
+              <li><Link href="/hardware-and-networking" className="hover:underline">View All Services</Link></li>
+              <li><Link href="/hardware-and-networking" className="hover:underline">Hardware Devices</Link></li>
+              <li><Link href="/hardware-and-networking" className="hover:underline">Network Solutions</Link></li>
+              <li><Link href="/hardware-and-networking" className="hover:underline">Maintenance & Support</Link></li>              
             </ul>
           </div>
 
@@ -109,13 +108,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-xl mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="#" className="hover:underline">Managed Services</Link></li>
-              <li><Link href="#" className="hover:underline">Hardware + Networking</Link></li>
-              <li><Link href="#" className="hover:underline">Industries</Link></li>
-              <li><Link href="#" className="hover:underline">Vendors</Link></li>
-              <li><Link href="#" className="hover:underline">Email Signup</Link></li>
-              <li><Link href="#" className="hover:underline">Blog</Link></li>
-              <li><Link href="#" className="hover:underline">Contact Us</Link></li>
+              <li><Link href="/it-services" className="hover:underline">Managed Services</Link></li>
+              <li><Link href="/hardware-and-networking" className="hover:underline">Hardware + Networking</Link></li>
+              <li><Link href="/industries" className="hover:underline">Industries</Link></li>
+              <li><Link href="/contact" className="hover:underline">Contact Us</Link></li>
             </ul>
           </div>
         </div>
