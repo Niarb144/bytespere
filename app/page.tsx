@@ -1,13 +1,13 @@
 import Image from "next/image";
-import Hero from "./components/Hero";
-import AboutSection from "./components/AboutSection";
-import ServiceSection from "./components/ServiceSection";
-import ITServicesOverview from "./components/ITServicesOverview";
-import ManagedItServices from "./components/ManagedItServices";
-import ReviewSection from "./components/ReviewSection";
-import BlogSection from "./components/BlogSection";
-import IndustrySlider from "./components/IndustrySlider";
-import VendorsSection from "./components/VendorSection";
+import Hero from "../components/Hero";
+import AboutSection from "../components/AboutSection";
+import ServiceSection from "../components/ServiceSection";
+import ITServicesOverview from "../components/ITServicesOverview";
+import ManagedItServices from "../components/ManagedItServices";
+import ReviewSection from "../components/ReviewSection";
+import BlogSection from "../components/BlogSection";
+import IndustrySlider from "../components/IndustrySlider";
+import VendorsSection from "../components/VendorSection";
 
 export default function Home() {
   return (
@@ -17,8 +17,8 @@ export default function Home() {
       <ServiceSection />
       <ITServicesOverview />
       <ManagedItServices />
-      <ReviewSection />
-      <BlogSection />
+      {/* <ReviewSection /> */}
+      {/* <BlogSection /> */}
       <IndustrySlider />
       <VendorsSection />
     </main>

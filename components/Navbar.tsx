@@ -9,9 +9,9 @@ type DropdownItem = { href: string; label: string };
 
 const DROPDOWNS: Record<string, DropdownItem[]> = {
   about: [
-    { href: "/about/company", label: "Company Overview" },
-    { href: "/about/team", label: "Our Team" },
-    { href: "/about/careers", label: "Careers" },
+    { href: "/about#company-overview", label: "Company Overview" },
+    { href: "/about#our-team", label: "Our Team" },
+    { href: "/careers", label: "Careers" },
   ],
   "it-services": [
     { href: "/it-services/managed-it", label: "Managed IT Support" },
@@ -41,7 +41,7 @@ const NAV_LINKS: { key: string; href: string; label: string }[] = [
 ];
 
 const CTA_BUTTONS = [
-  { href: "/client-portal", label: "CLIENT PORTAL" },
+  // { href: "/client-portal", label: "CLIENT PORTAL" },
   { href: "/quote", label: "REQUEST A QUOTE" },
   { href: "/help", label: "GET HELP" },
 ];
