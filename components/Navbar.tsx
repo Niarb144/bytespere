@@ -24,14 +24,14 @@ const DROPDOWNS: Record<string, DropdownItem[]> = {
     { href: "/it-services#remote-it-support", label: "Remote IT Support" },
   ],
   hardware: [
-    { href: "/hardware-and-networking/devices", label: "Hardware Devices" },
-    { href: "/hardware-and-networking/networking", label: "Network Solutions" },
-    { href: "/hardware-and-networking/support", label: "Maintenance & Support" },
+    { href: "/hardware-and-networking#workstations-desktops", label: "Hardware Devices" },
+    { href: "/hardware-and-networking#enterprise-wifi", label: "Network Solutions" },
+    { href: "/hardware-and-networking#preventive-maintenance", label: "Maintenance & Support" },
   ],
   industries: [
-    { href: "/industries/healthcare", label: "Healthcare" },
-    { href: "/industries/finance", label: "Finance" },
-    { href: "/industries/retail", label: "Retail" },
+    { href: "/industries", label: "Healthcare" },
+    { href: "/industries", label: "Finance" },
+    { href: "/industries", label: "Retail" },
   ],
 };
 

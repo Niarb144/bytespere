@@ -11,6 +11,12 @@ import {
 } from "@/data";
 
 export default function HardwareNetworkingPage() {
+  const allSections = [
+    ...hardwareCategories,
+    ...networkingSolutions,
+    ...maintenancePlans,
+  ];
+
   return (
     <main className="font-sans">
       {/* --- Page Header Banner --- */}
@@ -25,16 +31,32 @@ export default function HardwareNetworkingPage() {
           <h1 className="text-white text-3xl md:text-5xl font-bold leading-tight mb-4">
             Hardware & Networking
           </h1>
-          <p className="text-white/90 text-base md:text-lg max-w-2xl">
+          <p className="text-white/90 text-base md:text-lg max-w-2xl mb-8">
             Modern devices, resilient networks, and maintenance plans that
             keep your business equipment running at its best.
           </p>
+
+          {/* Quick-jump pills */}
+          <div className="flex flex-wrap gap-2">
+            {allSections.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className="bg-white/10 hover:bg-white/20 text-white text-xs font-medium px-4 py-2 rounded-full border border-white/30 transition-colors duration-200"
+              >
+                {item.title}
+              </a>
+            ))}
+          </div>
         </motion.div>
       </section>
 
       {/* --- Hardware Categories --- */}
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
         <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#0077C8] mb-2 block">
+            Hardware
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Modern Hardware Solutions
           </h2>
@@ -47,12 +69,13 @@ export default function HardwareNetworkingPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {hardwareCategories.map((category, idx) => (
             <motion.div
-              key={category.title}
+              id={category.id}
+              key={category.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="bg-white border border-gray-200 rounded-md shadow-sm overflow-hidden flex flex-col sm:flex-row"
+              className="scroll-mt-24 bg-white border border-gray-200 rounded-md shadow-sm overflow-hidden flex flex-col sm:flex-row"
             >
               <div className="relative w-full sm:w-40 h-44 sm:h-auto flex-shrink-0">
                 <Image
@@ -87,6 +110,9 @@ export default function HardwareNetworkingPage() {
       <section className="bg-[#EAEAEA] py-16 md:py-20 px-6 md:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0077C8] mb-2 block">
+              Networking
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Network Solutions
             </h2>
@@ -98,25 +124,39 @@ export default function HardwareNetworkingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {networkingSolutions.map((solution, idx) => (
               <motion.div
-                key={solution.title}
+                id={solution.id}
+                key={solution.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="bg-white rounded-md shadow-sm p-6 flex flex-col gap-3"
+                className="scroll-mt-24 bg-white rounded-md shadow-sm overflow-hidden flex flex-col"
               >
-                <div className="bg-[#0077C8] p-3 rounded-full w-fit">
-                  <solution.icon
-                    className="w-5 h-5 text-white"
-                    aria-hidden="true"
+                <div className="relative w-full h-36">
+                  <Image
+                    src={solution.image}
+                    alt={solution.title}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
+                    loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-black/20" />
+                  <div className="absolute bottom-3 left-3 bg-[#0077C8] p-2.5 rounded-full shadow-md">
+                    <solution.icon
+                      className="w-4 h-4 text-white"
+                      aria-hidden="true"
+                    />
+                  </div>
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {solution.description}
-                </p>
+                <div className="p-6 flex flex-col gap-2">
+                  <h3 className="font-bold text-gray-900 text-lg">
+                    {solution.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {solution.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -126,6 +166,9 @@ export default function HardwareNetworkingPage() {
       {/* --- Maintenance Plans --- */}
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
         <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#0077C8] mb-2 block">
+            Maintenance
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Maintenance & Lifecycle Support
           </h2>
@@ -137,15 +180,28 @@ export default function HardwareNetworkingPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {maintenancePlans.map((plan) => (
             <div
-              key={plan.title}
-              className="border-l-4 border-[#0077C8] bg-[#EAEAEA]/40 rounded-r-md p-6"
+              id={plan.id}
+              key={plan.id}
+              className="scroll-mt-24 bg-white border border-gray-200 rounded-md shadow-sm overflow-hidden flex flex-col sm:flex-row"
             >
-              <h3 className="font-bold text-gray-900 text-lg mb-2">
-                {plan.title}
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {plan.description}
-              </p>
+              <div className="relative w-full sm:w-36 h-36 sm:h-auto flex-shrink-0">
+                <Image
+                  src={plan.image}
+                  alt={plan.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 144px"
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6 border-l-4 border-[#0077C8] flex-1">
+                <h3 className="font-bold text-gray-900 text-lg mb-2">
+                  {plan.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {plan.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

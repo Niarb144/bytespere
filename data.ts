@@ -172,6 +172,7 @@ export const serviceProcess = [
 // ---------- HARDWARE ----------
 export const hardwareCategories = [
   {
+    id: "workstations-desktops",
     icon: ComputerDesktopIcon,
     title: "Workstations & Desktops",
     description:
@@ -179,6 +180,7 @@ export const hardwareCategories = [
     image: "/images/img1.jpg",
   },
   {
+    id: "laptops-mobile-devices",
     icon: DevicePhoneMobileIcon,
     title: "Laptops & Mobile Devices",
     description:
@@ -186,6 +188,7 @@ export const hardwareCategories = [
     image: "/images/img2.jpg",
   },
   {
+    id: "servers-storage",
     icon: CpuChipIcon,
     title: "Servers & Storage",
     description:
@@ -193,6 +196,7 @@ export const hardwareCategories = [
     image: "/images/img3.jpg",
   },
   {
+    id: "printers-peripherals",
     icon: PrinterIcon,
     title: "Printers & Peripherals",
     description:
@@ -203,51 +207,67 @@ export const hardwareCategories = [
 
 export const networkingSolutions = [
   {
+    id: "enterprise-wifi",
     icon: WifiIcon,
     title: "Enterprise Wi-Fi",
     description:
       "Commercial-grade wireless coverage designed for reliability across offices, warehouses, and multi-floor buildings.",
+    image: "/images/img2.jpg",
   },
   {
+    id: "structured-cabling",
     icon: SignalIcon,
     title: "Structured Cabling",
     description:
       "Clean, certified network cabling installations that keep your infrastructure organized, fast, and easy to maintain.",
+    image: "/images/img3.jpg",
   },
   {
+    id: "firewalls-network-security",
     icon: LockClosedIcon,
     title: "Firewalls & Network Security",
     description:
       "Perimeter security hardware configured and monitored to keep threats out while keeping legitimate traffic moving.",
+    image: "/images/img4.jpg",
   },
   {
+    id: "switches-routing",
     icon: ServerIcon,
     title: "Switches & Routing",
     description:
       "Managed switches and routing equipment configured for performance, segmentation, and future scalability.",
+    image: "/images/img1.jpg",
   },
 ];
 
 export const maintenancePlans = [
   {
+    id: "preventive-maintenance",
     title: "Preventive Maintenance",
     description:
       "Scheduled hardware health checks and cleaning to extend the life of your equipment and catch failures early.",
+    image: "/images/img1.jpg",
   },
   {
+    id: "on-site-repair",
     title: "On-Site Repair",
     description:
       "Technicians dispatched to your location for hands-on repairs when remote troubleshooting isn't enough.",
+    image: "/images/img2.jpg",
   },
   {
+    id: "equipment-lifecycle-management",
     title: "Equipment Lifecycle Management",
     description:
       "Planning around warranty windows and refresh cycles so hardware is replaced on your schedule, not after it fails.",
+    image: "/images/img3.jpg",
   },
   {
+    id: "asset-tracking-inventory",
     title: "Asset Tracking & Inventory",
     description:
       "A clear record of every device on your network, its warranty status, and its maintenance history.",
+    image: "/images/img4.jpg",
   },
 ];
 
