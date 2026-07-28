@@ -29,9 +29,10 @@ const DROPDOWNS: Record<string, DropdownItem[]> = {
     { href: "/hardware-and-networking#preventive-maintenance", label: "Maintenance & Support" },
   ],
   industries: [
-    { href: "/industries", label: "Healthcare" },
-    { href: "/industries", label: "Finance" },
-    { href: "/industries", label: "Retail" },
+    { href: "/industries#retail", label: "Retail" },
+    { href: "/industries#malls", label: "Shopping Centres" },
+    { href: "/industries#manufacturing", label: "Manufacturing" },
+    { href: "/industries#business", label: "Business"}
   ],
 };
 

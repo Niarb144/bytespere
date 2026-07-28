@@ -274,6 +274,7 @@ export const maintenancePlans = [
 // ---------- INDUSTRIES ----------
 export const industries = [
   {
+    id: "retail",
     icon: BuildingStorefrontIcon,
     name: "Retail",
     image: "/images/img1.jpg",
@@ -282,6 +283,7 @@ export const industries = [
     companies: ["Highstreet Fashion Group", "UrbanMart Retailers", "Prime Grocers Ltd."],
   },
   {
+    id: "malls",
     icon: BuildingLibraryIcon,
     name: "Malls & Shopping Centres",
     image: "/images/img2.jpg",
@@ -290,6 +292,7 @@ export const industries = [
     companies: ["Westview Mall Management", "Riverside Shopping Centre", "Metro Plaza Holdings"],
   },
   {
+    id: "manufacturing",
     icon: Cog8ToothIcon,
     name: "Manufacturing",
     image: "/images/img3.jpg",
@@ -298,6 +301,7 @@ export const industries = [
     companies: ["Alloy Works Manufacturing", "Coastal Packaging Co.", "Precision Tools Ltd."],
   },
   {
+    id: "business",
     icon: BuildingOffice2Icon,
     name: "Business & Professional Services",
     image: "/images/img4.jpg",
